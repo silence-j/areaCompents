@@ -1,0 +1,36 @@
+$white: #fff!default;
+$black: #303133!default;
+
+$green: #67C23A!default;
+$blue: #409EFF!default;
+$orange: #E6A23C!default;
+$red: #F56C6C!default;
+$deepgrey: #909399!default;
+
+$bg: #EBEBEB!default;
+$border: #DCDFE6!default;
+
+$primary: #1989FA!default;
+$link: #409EFF!default;
+
+$trColor: rgba(64, 158, 255, 0.1);
+
+// setImg(xxx.png);
+@function setImg($path) {
+    @return '/static/img/'+$path;
+}
+
+//@include shadow;
+@mixin shadow {
+    box-shadow: 0 0 20px 0 rgba(28, 47, 119, 0.07);
+}
+
+//@include colorFactory($name, $color);
+@mixin colorFactory ($name, $color) {
+    .#{$name} {
+        background-color: $color!important;
+    }
+    .t-#{$name} {
+        color: $color!important;
+    }
+}

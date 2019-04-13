@@ -1,0 +1,256 @@
+@import 'variables';
+@import 'uireset';
+
+// Common
+html{
+    width: 100%;
+    //height: 100%;
+}
+body {
+    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+        'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    color: #303133;
+    background-color: $bg;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: $primary;
+    transition: color 300ms ease;
+    &:hover {
+        color: $primary;
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clearfix{
+    &::after{
+      clear:both;
+      font-size:0;
+      height:0;
+      display:block;
+      visibility:hidden;
+      content:"";
+      line-height:0
+    }
+    &::before{
+       clear:both;
+       font-size:0;
+       height:0;
+       display:block;
+       visibility:hidden;
+       content:"";
+       line-height:0
+    }
+   }
+.clearfix{
+    zoom:1;
+    min-width: 1200px;
+}
+.vhide{
+    visibility: hidden;
+}
+.mt10 {
+    margin-top: 10px;
+}
+.mt15 {
+    margin-top: 15px;
+}
+.mt20 {
+    margin-top: 20px;
+}
+.ml15 {
+    margin-left: 15px;
+}
+.mt30 {
+    margin-top: 30px;
+}
+.mt40 {
+    margin-top: 40px;
+}
+.mt50 {
+    margin-top: 50px;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
+.mb15 {
+    margin-bottom: 15px;
+}
+.mb20 {
+    margin-bottom: 20px;
+}
+.m15Left {
+    margin-left: 15px;
+}
+
+.dialog-foot{
+    &/deep/.el-button{
+        width: 130px;
+        height: 40px;
+    }
+    &/deep/.el-button:first-child{
+        margin-right: 10px;
+    }
+}
+.pointerStyle{
+    cursor: pointer;
+}
+/* type = number 箭头隐藏*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+// '*' 为必填项样式
+.must{
+  width: 100%;
+  text-align: left;
+  font-size:16px;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+  .mark{
+    font-size: 20px;
+    vertical-align: text-top;
+    color: #f56c6c;
+  }
+}
+.more-line-style{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+}
+//页面切换动画
+.page-toggle-enter-active{
+    transition: all 0.2s ease-in 0.25s;
+}
+.page-toggle-leave-active{
+    transition: all 0.2s ease-out 0s;
+}
+.page-toggle-enter, .page-toggle-leave-to{
+    opacity: 0;
+    padding: 0px;
+}
+// 搜索栏样式
+.searchForm{
+    border-bottom: 1px solid #DCDFE6;
+    margin:-10px -20px 10px -20px;
+    padding-left: 20px;
+    position: relative;
+    .el-form-item{
+        margin-bottom: 16px;
+        .el-input--medium{
+            width: 160px;
+            height: 40px;
+        }
+    }
+    .el-form--inline{
+        .el-form-item__label{
+            display: block;
+            text-align: left;
+        }
+        .searchBtn{
+            margin-top: 36px;
+            width: 120px;
+        }
+    }
+}
+.refreshBtn{
+    color: #606266;
+}
+.refreshBtn:hover{
+    color: $primary;
+}
+// navbar
+.navbar{
+    height: 48px;
+    background: $bg;
+    margin: -20px -20px 20px -20px;
+    list-style: none;
+    padding-left: 0;
+    li{
+        height: 48px;
+        padding: 0 15px;
+        background: #FAFAFA;
+        line-height: 48px;
+        text-align: center;
+        font-size:14px;
+        color: #909399;
+        display: inline-block;
+        cursor: pointer;
+    }
+    li.router-link-active{
+        background: #ffffff;
+        color: #303133;
+        font-weight: bold;
+    }
+}
+// tips
+.msgtit{
+    font-size:14px;
+    color:#909399;
+}
+.formtips{
+    padding-left: 100px;
+    font-size: 14px;
+    color: #303133;
+    line-height: 20px;
+    margin-bottom: 10px;
+    span{
+        color: #F56C6C;
+    }
+}
+.remarktips {
+    margin-right: 10px;
+    color: #409EFF;
+}
+// 弹窗
+.dialogForm{
+    .el-select,.el-input{
+        width: 280px;
+    }
+}
+// 滚动条
+.left-box{}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+.left-box::-webkit-scrollbar
+{
+    width: 8px;
+    height: 8px;
+    background-color: #3C4354;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+.left-box::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 6px;
+    background-color: #3C4354;
+}
+/*定义滑块 内阴影+圆角*/
+.left-box::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: #888;
+}
+@include colorFactory('green', $green);
+@include colorFactory('blue', $blue);
+@include colorFactory('orange', $orange);
+@include colorFactory('red', $red);
+@include colorFactory('deepgrey', $deepgrey);
