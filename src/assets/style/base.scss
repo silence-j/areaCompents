@@ -98,7 +98,9 @@ p{
 .m15Left {
     margin-left: 15px;
 }
-
+.el-tooltip__popper{
+    width: 250px;
+}
 .dialog-foot{
     &/deep/.el-button{
         width: 130px;

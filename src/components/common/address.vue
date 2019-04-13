@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-        <el-input placeholder="请选择省市区" @focus="showName = true" class="show-box" v-model="citysValue"></el-input>
+        <!--<el-tooltip effect="light" :content="citysValue" placement="right">-->
+            <el-input placeholder="请选择省市区" @focus="showName = true" class="show-box" v-model="citysValue"></el-input>
+        <!--</el-tooltip>-->
         <div v-if="showName" class="city-container">
             <ul>
                 <li v-for="(item, index) in allProvinceies" class="province" @click="changeActive(item)" :class="item.isActive ? 'isActive' : ''" :key="index">{{ item.name }}
@@ -79,6 +81,7 @@
                 let areaItem = addressData.find(x => x.id + '' === this.provincesId + '')
                 this.allCities = areaItem.children.map(sub => Object.assign({}, sub, {isActive: false}))
                 this.allAreas = []
+                this.cityIds = ''
                 this.isIndeterminate = false
                 this.checkAll = false
             },
@@ -112,19 +115,24 @@
                 this.isIndeterminate = checkedCount > 0 && checkedCount < this.allAreas.length
             },
             submit () {
-                let str = ''
-                let a = this.allProvinceies.findIndex(x => x.id + '' === this.provincesId + '')
-                str = this.allProvinceies[a].name
-                let b = this.allCities.findIndex(x => x.id + '' === this.cityIds + '')
-                str = str + this.allCities[b].name
-                this.allAreas.forEach(item => {
-                    let d = this.areaIds.findIndex(x => x + '' === item.id + '')
-                    if (d !== -1) {
-                        str = str + item.name
-                    }
-                })
-                this.citysValue = str
-                this.showName = false
+                console.log(this.provincesId, this.cityIds, this.areaIds.length, '789')
+                if (!this.provincesId || !this.cityIds || !this.areaIds.length) {
+                    this.$message.warning('请选择省市区！')
+                } else {
+                    let str = ''
+                    let a = this.allProvinceies.findIndex(x => x.id + '' === this.provincesId + '')
+                    str = this.allProvinceies[a].name
+                    let b = this.allCities.findIndex(x => x.id + '' === this.cityIds + '')
+                    str = str + this.allCities[b].name
+                    this.allAreas.forEach(item => {
+                        let d = this.areaIds.findIndex(x => x + '' === item.id + '')
+                        if (d !== -1) {
+                            str = str + item.name
+                        }
+                    })
+                    this.citysValue = str
+                    this.showName = false
+                }
             }
         }
     }
@@ -134,6 +142,10 @@
     .container{
         font-size: 14px;
         position: relative;
+        &/deep/.el-input__inner{
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         .city-container{
             position: absolute;
             top: 72px;

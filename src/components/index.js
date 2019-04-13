@@ -1,7 +1,5 @@
 // 动态注册compontents内的所有组件，之后在全局无需注册即可使用
-// 格式为  目录名-文件名，
-// 例子1  src/components/page/header.vue, <page-header>
-// 例子2  src/components/Hello.vue, <hello>
+// 格式为  目录名-文件名
 
 import Vue from 'vue'
 const requireContext = require.context('./', true, /.*\.vue$/)
